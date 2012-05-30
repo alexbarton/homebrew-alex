@@ -1,5 +1,5 @@
-Alex' Library for Homebrew
-==========================
+Alex' Library for Homebrew Formulae
+===================================
 
 This GIT repository contains additional formulae for [homebrew], a package
 manager for Mac OS X.
