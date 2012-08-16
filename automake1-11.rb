@@ -19,6 +19,10 @@ class Automake111 < Formula
     system "rm", "#{prefix}/share/man/man1/automake.1"
     system "rm", "-r", "#{prefix}/share/doc"
     system "rm", "-r", "#{prefix}/share/info"
+
+    # make sure all required files are found ...
+    system "ln", "-s", "#{prefix}/share/aclocal-1.11", "#{prefix}/share/aclocal"
+    system "ln", "-s", "#{prefix}/share/automake-1.11", "#{prefix}/share/automake"
   end
 
   def test
