@@ -8,19 +8,17 @@ class Automake111 < Formula
 
   depends_on "autoconf" => :build
 
-  if MacOS.xcode_version.to_f < 4.3 or File.file? "/usr/bin/automake"
-    keg_only "Xcode (up to and including 4.2) provides (a rather old) Automake."
-  end
-
   def install
     system "./configure", "--prefix=#{prefix}"
     system "make install"
 
-    # our aclocal must go first: https://github.com/mxcl/homebrew/issues/10618
-    (share/"aclocal/dirlist").write <<-EOS.undent
-      #{HOMEBREW_PREFIX}/share/aclocal
-      /usr/share/aclocal
-      EOS
+    # remove all files that clash with the "automake" formula ...
+    system "rm", "#{prefix}/bin/aclocal"
+    system "rm", "#{prefix}/bin/automake"
+    system "rm", "#{prefix}/share/man/man1/aclocal.1"
+    system "rm", "#{prefix}/share/man/man1/automake.1"
+    system "rm", "-r", "#{prefix}/share/doc"
+    system "rm", "-r", "#{prefix}/share/info"
   end
 
   def test
