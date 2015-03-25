@@ -2,7 +2,7 @@ require 'formula'
 
 class Sendfile < Formula
   homepage 'http://fex.rus.uni-stuttgart.de/saft/sendfile.html'
-  url 'http://fex.rus.uni-stuttgart.de/download/sendfile-2.1b.tar.gz'
+  url 'http://fex.belwue.de/download/sendfile-2.1b.tar.gz'
   sha256 'd0b4305c38e635d67bb2e316ccaf1d3afde63e67b748a104582d0ce9cf7f2a8c'
 
   def patches
