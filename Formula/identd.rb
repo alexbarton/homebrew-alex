@@ -1,9 +1,8 @@
-require "formula"
-
 class Identd < Formula
-  url "http://rc.shaunrowland.com/git/identd.git", :using => :git
-  version "0.20120228"
+  desc "Simple IDENT daemon"
   homepage "http://www.shaunrowland.com/fsync/2011/05/15/identd-for-mac-os-x/"
+  url "http://rc.shaunrowland.com/git/identd.git"
+  version "0.20120228"
 
   def patches
     # manual page: remove "manual uninstall" description
@@ -15,7 +14,7 @@ class Identd < Formula
       /CODE_SIGN_IDENTITY = \".*\"/, 'CODE_SIGN_IDENTITY=""'
     inreplace "identd/identd.8",
       %r{/usr/local}, "#{HOMEBREW_PREFIX}"
-    system "xcodebuild -target identd -configuration Release"
+    xcodebuild "SYMROOT=build", "-target", "identd", "-configuration", "Release"
     sbin.install("build/Release/identd")
     man8.install("identd/identd.8")
   end
