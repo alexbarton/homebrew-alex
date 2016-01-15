@@ -1,9 +1,9 @@
-require 'formula'
+require "formula"
 
 class Identd < Formula
-  url 'http://rc.shaunrowland.com/git/identd.git', :using => :git
-  version '0.20120228'
-  homepage 'http://www.shaunrowland.com/fsync/2011/05/15/identd-for-mac-os-x/'
+  url "http://rc.shaunrowland.com/git/identd.git", :using => :git
+  version "0.20120228"
+  homepage "http://www.shaunrowland.com/fsync/2011/05/15/identd-for-mac-os-x/"
 
   def patches
     # manual page: remove "manual uninstall" description
@@ -14,10 +14,10 @@ class Identd < Formula
     inreplace "identd.xcodeproj/project.pbxproj",
       /CODE_SIGN_IDENTITY = \".*\"/, 'CODE_SIGN_IDENTITY=""'
     inreplace "identd/identd.8",
-      /\/usr\/local/, "#{HOMEBREW_PREFIX}"
+      %r{/usr/local}, "#{HOMEBREW_PREFIX}"
     system "xcodebuild -target identd -configuration Release"
-    sbin.install('build/Release/identd')
-    man8.install('identd/identd.8')
+    sbin.install("build/Release/identd")
+    man8.install("identd/identd.8")
   end
 end
 
