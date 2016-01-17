@@ -1,0 +1,8 @@
+#!/bin/sh
+# 2016-01-17, alex@barton.de
+
+for formula in "$@"; do
+	brew deps --installed \
+	 | grep "\b$formula\b" \
+	 | cut -d':' -f1
+done | sort -u
