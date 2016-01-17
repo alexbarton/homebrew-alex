@@ -17,5 +17,5 @@ Now you can use all the regular `brew` subcommands like `search`, `install`,
 documentation for details.
 
 
-[homebrew]:http://mxcl.github.com/homebrew/
+[homebrew]:http://brew.sh
 [brew tap]:https://github.com/Homebrew/homebrew/blob/master/share/doc/homebrew/brew-tap.md
