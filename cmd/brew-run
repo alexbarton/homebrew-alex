@@ -1,20 +1,17 @@
 #!/bin/sh
-# 2016-01-06, alex@barton.de
+# 2016-08-06, alex@barton.de
 
 # Include "ax-common.sh":
+ax_common_sourced=
 for dir in "$HOME/lib" "$HOME/.ax" /usr/local /opt/ax /usr; do
 	[ -z "$ax_common_sourced" ] || break
 	ax_common="${dir}/lib/ax/ax-common.sh"
-	[ -r "$ax_common" ] && source "$ax_common"
+	# shellcheck source=/usr/local/lib/ax/ax-common.sh
+	[ -r "$ax_common" ] && . "$ax_common"
 done
 if [ -z "$ax_common_sourced" ]; then
-	function ax_msg() {
-		echo "$2"
-	}
-	function ax_abort() {
-		ax_msg - "$@"
-		exit 1
-	}
+	ax_msg() { shift; echo "$@"; }
+	ax_abort() { ax_msg - "$@"; exit 1; }
 fi
 unset dir ax_common ax_common_sourced
 
