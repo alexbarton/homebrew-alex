@@ -3,7 +3,7 @@ require "formula"
 class Gxemul < Formula
   homepage "http://gxemul.sourceforge.net"
   url "http://gxemul.sourceforge.net/src/gxemul-0.6.0.1.tar.gz"
-  sha1 "8a9b7a6c08628c2a59a6e7e9c7c449c3826b4744"
+  sha256 "0790823d8d7f8848c98318ace829f7a0159a5f9b79d80bd8c367fb17014dcda9"
 
   depends_on :x11
 
