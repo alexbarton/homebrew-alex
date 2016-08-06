@@ -2,7 +2,7 @@ require 'formula'
 
 class Aclock < Formula
   url 'http://www.tenox.net/out/aclock/aclock-unix-curses.c'
-  sha1 '87b15f6030e27de3ac689e01120db2dd21003b3c'
+  sha256 '2b098996409c4740f492fb8fd5a63cb5e3e15283c2f7e3f06c75d6a9ad916669'
   version '2.3'
   homepage 'http://www.tenox.net/out/'
 
