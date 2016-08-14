@@ -17,12 +17,13 @@ unset dir ax_common ax_common_sourced
 
 ax_msg - "Updating Homebrew installation ..."
 brew update || ax_abort "Update failed!"
-echo
 
 outdated=$( brew outdated --quiet | wc -l | tr -d '\t ' )
 if [ $outdated -gt 0 ]; then
+	echo
 	ax_msg - "$outdated formula outdated:"
 	brew outdated || ax_abort "Failed to list outdated packages!"
+
 	echo
 	brew upgrade --all || ax_abort "Upgrade failed!"
 	brew linkapps --local || ax_abort "Linking of applications failed!"
