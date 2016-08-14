@@ -1,5 +1,5 @@
 #!/bin/sh
-# 2016-08-06, alex@barton.de
+# 2016-08-14, alex@barton.de
 
 # Include "ax-common.sh":
 ax_common_sourced=
@@ -31,5 +31,5 @@ if [ $outdated -gt 0 ]; then
 	brew cleanup || ax_abort "\"brew cleanup\" failed!"
 	brew prune || ax_abort "\"brew prune\" failed!"
 else
-	ax_msg - "Nothing outdated."
+	ax_msg 0 "Nothing outdated."
 fi
