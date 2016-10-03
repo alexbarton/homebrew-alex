@@ -1,5 +1,5 @@
 #!/bin/sh
-# 2016-08-14, alex@barton.de
+# brew-run -- Update, upgrade, and clean up Hoembrew installation.
 
 # Include "ax-common.sh":
 ax_common_sourced=

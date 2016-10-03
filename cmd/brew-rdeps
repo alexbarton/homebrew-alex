@@ -1,5 +1,5 @@
 #!/bin/sh
-# 2016-01-20, alex@barton.de
+# brew-rdeps -- List reverse-dependencies of Homebrew formulae
 
 for formula in "$@"; do
 	brew deps --installed --skip-build \
