@@ -1,8 +1,4 @@
 #!/bin/sh
 # brew-rdeps -- List reverse-dependencies of Homebrew formulae
 
-for formula in "$@"; do
-	brew deps --installed --skip-build \
-	 | grep " $formula\b" \
-	 | cut -d':' -f1
-done | sort -u
+brew uses --installed --recursive "$@"
