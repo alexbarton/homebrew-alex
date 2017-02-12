@@ -27,9 +27,6 @@ if [ $outdated -gt 0 ]; then
 
 	brew upgrade --cleanup || ax_abort "Upgrade failed!"
 	echo
-
-	ax_msg - "Linking applications ..."
-	brew linkapps --local || ax_abort "Linking of applications failed!"
 else
 	ax_msg 0 "Nothing outdated."
 fi
