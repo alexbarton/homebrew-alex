@@ -34,4 +34,5 @@ if [ $outdated -gt 0 ]; then
 	echo
 else
 	ax_msg 0 "Nothing outdated."
+	echo
 fi
