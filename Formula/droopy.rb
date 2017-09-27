@@ -1,8 +1,8 @@
 class Droopy < Formula
   desc "Mini web server that let others upload files to your computer"
   homepage "https://github.com/stackp/Droopy"
-  url "https://github.com/stackp/Droopy.git", :revision => "b7b0bb9d003aed019bc5303e854089cd3e44f64c"
-  version "20131121"
+  url "https://github.com/stackp/Droopy.git", :revision => "7a9c7bc46c4ff8b743755be86a9b29bd1a8ba1d9"
+  version "20160830"
 
   depends_on :python if MacOS.version <= :snow_leopard
 
