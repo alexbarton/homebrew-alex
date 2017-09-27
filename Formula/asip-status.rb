@@ -3,7 +3,7 @@ require 'formula'
 class AsipStatus < Formula
   url 'https://raw.github.com/Netatalk/Netatalk/master/contrib/shell_utils/asip-status.pl.in'
   homepage 'http://netatalk.sourceforge.net/'
-  sha256 'c9e3c7687d0b250d883bfe0323bff8f4e257fc27c3c2f676688cb0c606c40086'
+  sha256 'c4b5129f0a99a25937065d1668068c1c736d08535e4fc60ff9e748b79249b2e9'
   version '20120724'
 
   def install
