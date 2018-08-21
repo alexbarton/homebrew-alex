@@ -18,8 +18,8 @@ unset dir ax_common ax_common_sourced
 ax_msg - "Updating Homebrew installation ..."
 brew update || ax_abort "Update failed!"
 
-outdated=$( brew outdated --quiet | wc -l | tr -d '\t ' )
-if [ $outdated -gt 0 ]; then
+outdated=$( brew outdated --verbose | grep -F -cv "pinned at" )
+if [ "$outdated" -gt 0 ]; then
 	echo
 	ax_msg - "$outdated formula outdated:"
 	brew outdated --verbose || ax_abort "Failed to list outdated packages!"
