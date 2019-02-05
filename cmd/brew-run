@@ -25,12 +25,11 @@ if [ "$outdated" -gt 0 ]; then
 	brew outdated --verbose || ax_abort "Failed to list outdated packages!"
 	echo
 
-	brew upgrade --ignore-pinned --cleanup || ax_abort "Upgrade failed!"
+	brew upgrade --ignore-pinned || ax_abort "Upgrade failed!"
 	echo
 
 	ax_msg - "Cleaning up ..."
 	brew cleanup --prune=2 || ax_abort "\"brew cleanup\" failed!"
-	brew prune || ax_abort "\"brew prune\" failed!"
 	echo
 else
 	ax_msg 0 "Nothing outdated."
