@@ -4,7 +4,7 @@ class Droopy < Formula
   url "https://github.com/stackp/Droopy.git", :revision => "7a9c7bc46c4ff8b743755be86a9b29bd1a8ba1d9"
   version "20160830"
 
-  depends_on :python if MacOS.version <= :snow_leopard
+  depends_on "python"
 
   def install
     bin.install "droopy"
