@@ -10,6 +10,8 @@ class Identd < Formula
   def install
     inreplace "identd.xcodeproj/project.pbxproj",
       /CODE_SIGN_IDENTITY = \".*\"/, 'CODE_SIGN_IDENTITY=""'
+    inreplace "identd.xcodeproj/project.pbxproj",
+      /ARCHS_STANDARD_32_64_BIT/, 'ARCHS_STANDARD_64_BIT'
     inreplace "identd/identd.8",
       %r{/usr/local}, "#{HOMEBREW_PREFIX}"
     xcodebuild "SYMROOT=build", "-target", "identd", "-configuration", "Release"
