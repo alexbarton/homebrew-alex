@@ -5,13 +5,11 @@ class Sendfile < Formula
   url 'http://fex.belwue.de/download/sendfile-2.1b.tar.gz'
   sha256 'd0b4305c38e635d67bb2e316ccaf1d3afde63e67b748a104582d0ce9cf7f2a8c'
 
-  def patches
-    # source code:
-    #  - remove nested "MAXS() inside snprintf()" macros.
-    #  - disable wtmp/utmp on Mac OS X.
-    #  - only call seteuid() & setegid() when it would change user/group.
-    DATA
-  end
+  # source code:
+  #  - remove nested "MAXS() inside snprintf()" macros.
+  #  - disable wtmp/utmp on Mac OS X.
+  #  - only call seteuid() & setegid() when it would change user/group.
+  patch :DATA
 
   def install
     inreplace ["makeconfig", "etc/sfdconf", "doc/receive.1", "doc/sendfile.1", "doc/sendmsg.1", "doc/sendfiled.8" ] do |s|
