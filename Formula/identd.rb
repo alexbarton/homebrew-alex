@@ -4,10 +4,8 @@ class Identd < Formula
   url "http://rc.shaunrowland.com/git/identd.git"
   version "0.20120228"
 
-  def patches
-    # manual page: remove "manual uninstall" description
-    DATA
-  end
+  # manual page: remove "manual uninstall" description
+  patch :DATA
 
   def install
     inreplace "identd.xcodeproj/project.pbxproj",
