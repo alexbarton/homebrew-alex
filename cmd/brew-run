@@ -21,7 +21,7 @@ brew update || ax_abort "Update failed!"
 outdated=$( brew outdated --verbose | grep -F -cv "pinned at" )
 if [ "$outdated" -gt 0 ]; then
 	echo
-	ax_msg - "$outdated formula outdated:"
+	ax_msg - "$outdated formula & casks outdated:"
 	brew outdated --verbose || ax_abort "Failed to list outdated packages!"
 	echo
 
