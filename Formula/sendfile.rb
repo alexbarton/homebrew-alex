@@ -34,31 +34,21 @@ class Sendfile < Formula
     (var + 'spool/sendfile/OUTGOING').mkpath
     (var + 'spool/sendfile/LOG').chmod 00700
     (var + 'spool/sendfile/OUTGOING').chmod 01777
-
-    plist_path.write startup_plist
-    plist_path.chmod 0644
   end
 
-  def caveats; <<-EOCAVEATS
-# Start/Stop sendfiled(8) Daemon
-
-Note: if you only want to send file using sendfile(1) or messages using
-sendmsg(1), and don't want to receive any files or messages at all, you
-don't have to enable the sendfiled(8) server daemon!
-
-If this is your first install, automatically load on login with:
-  sudo cp #{plist_path} /Library/LaunchDaemons/
-  sudo launchctl load -w /Library/LaunchDaemons/#{plist_path.basename}
-
-If this is an upgrade and you already have the #{plist_path.basename} loaded:
-  sudo launchctl unload -w /Library/LaunchDaemons/#{plist_path.basename}
-  sudo cp #{plist_path} /Library/LaunchDaemons/
-  sudo launchctl load -w /Library/LaunchDaemons/#{plist_path.basename}
-EOCAVEATS
+  def caveats
+    <<-EOCAVEATS
+If you only want to send files using sendfile(1) or messages using sendmsg(1),
+and don't want to receive any files or messages at all, you don't have to
+enable the sendfiled(8) server daemon!
+    EOCAVEATS
   end
 
-  def startup_plist
-    return <<-EOPLIST
+
+  plist_options startup: true
+
+  def plist
+    <<-EOPLIST
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
