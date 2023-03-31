@@ -11,7 +11,7 @@ for dir in "$HOME/lib" "$HOME/.ax" /usr/local /opt/ax /usr; do
 done
 if [ -z "$ax_common_sourced" ]; then
 	ax_msg() { shift; echo "$@"; }
-	ax_abort() { ax_msg - "$@"; exit 1; }
+	ax_abort() { ax_msg - "$@" >&2; exit 1; }
 fi
 unset dir ax_common ax_common_sourced
 
