@@ -38,47 +38,9 @@ class Sendfile < Formula
 
   def caveats
     <<-EOCAVEATS
-If you only want to send files using sendfile(1) or messages using sendmsg(1),
-and don't want to receive any files or messages at all, you don't have to
-enable the sendfiled(8) server daemon!
+The sendfiled(8) daemon is installed but not started by this Homebrew formula.
+If you want to run the daemon, you have to take care of it yourself!
     EOCAVEATS
-  end
-
-
-  plist_options startup: true
-
-  def plist
-    <<-EOPLIST
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>Label</key>
-  <string>#{plist_name}</string>
-  <key>ProgramArguments</key>
-  <array>
-    <string>#{HOMEBREW_PREFIX}/sbin/sendfiled</string>
-  </array>
-  <key>UserName</key>
-  <string>root</string>
-  <key>inetdCompatibility</key>
-  <dict>
-    <key>Wait</key>
-    <false/>
-  </dict>
-  <key>Sockets</key>
-  <dict>
-    <key>Listeners</key>
-    <dict>
-      <key>SockServiceName</key>
-      <string>saft</string>
-    </dict>
-  </dict>
-  <key>WorkingDirectory</key>
-  <string>#{HOMEBREW_PREFIX}</string>
-</dict>
-</plist>
-    EOPLIST
   end
 
 end
