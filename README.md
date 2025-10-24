@@ -22,7 +22,8 @@ Subcommands provided by this repository
 The following additional `brew` subcommands are provided by this repository:
 
 `brew rdeps <installed_formula>`
-: Show "reverse dependencies" of a formula. The reverse of `brew deps`.
+: Show "reverse dependencies" of a formula. The reverse of `brew deps`. This is
+a simple wrapper for `brew uses --installed --recursive`.
 
 `brew run`
 : Combine `brew update`, `brew outdated`, `brew upgrade` and `brew cleanup`
