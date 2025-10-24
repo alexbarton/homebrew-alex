@@ -1,17 +1,16 @@
 require 'formula'
 
 class AsipStatus < Formula
-  url 'https://raw.github.com/Netatalk/Netatalk/master/contrib/shell_utils/asip-status.pl.in'
+  url 'https://raw.githubusercontent.com/Netatalk/netatalk/refs/tags/netatalk-4-3-2/contrib/bin_utils/asip-status.pl'
   homepage 'http://netatalk.sourceforge.net/'
-  sha256 '2acb0d89098b245ac130d16daca76a79fdbf6557ab58c88f6c379ceb059075a0'
-  version '20211121'
+  sha256 'c4ab5f6d94f93f672764247b4ce849b1c75531c82120f7621e66269d1d85d490'
+  version '4.3.2'
 
   def install
-    system 'mv "asip-status.pl.in" "asip-status.pl"'
     inreplace "asip-status.pl",
       "@PERL@", "/usr/bin/perl"
     inreplace "asip-status.pl",
-      "@NETATALK_VERSION@", version
+      "@netatalk_version@", version
     bin.install('asip-status.pl')
   end
 
