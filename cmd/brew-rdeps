@@ -1,4 +1,5 @@
 #!/bin/sh
 # brew-rdeps -- List reverse-dependencies of Homebrew formulae
 
-brew uses --installed --recursive "$@"
+echo "Note: \"brew rdeps\" is DEPRECATED! Falling back to \"brew uses --installed --recursive\"." >&2
+exec brew uses --installed --recursive "$@"
