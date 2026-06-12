@@ -1,37 +1,5 @@
 #!/bin/sh
 # brew-run -- Update, upgrade, and clean up Hoembrew installation.
 
-# Include "ax-common.sh":
-ax_common_sourced=
-for dir in "$HOME/lib" "$HOME/.ax" /usr/local /opt/ax /usr; do
-	[ -z "$ax_common_sourced" ] || break
-	ax_common="${dir}/lib/ax/ax-common.sh"
-	# shellcheck source=/usr/local/lib/ax/ax-common.sh
-	[ -r "$ax_common" ] && . "$ax_common"
-done
-if [ -z "$ax_common_sourced" ]; then
-	ax_msg() { shift; echo "$@"; }
-	ax_abort() { ax_msg - "$@" >&2; exit 1; }
-fi
-unset dir ax_common ax_common_sourced
-
-ax_msg - "Updating Homebrew installation ..."
-brew update || ax_abort "Update failed!"
-
-outdated=$( brew outdated --verbose | grep -F -cv "pinned at" )
-if [ "$outdated" -gt 0 ]; then
-	echo
-	ax_msg - "$outdated formula & casks outdated:"
-	brew outdated --verbose || ax_abort "Failed to list outdated packages!"
-	echo
-
-	brew upgrade || ax_abort "Upgrade failed!"
-	echo
-
-	ax_msg - "Cleaning up ..."
-	brew cleanup --prune=2 || ax_abort "\"brew cleanup\" failed!"
-	echo
-else
-	ax_msg 0 "Nothing outdated."
-	echo
-fi
+echo "Note: \"brew run\" is DEPRECATED! Falling back to \"brew upgrade\"." >&2
+exec brew upgrade
